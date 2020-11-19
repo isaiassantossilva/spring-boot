@@ -1,7 +1,5 @@
 package com.santos.springbool.resources.exception;
 
-import java.util.Arrays;
-
 import javax.servlet.http.HttpServletRequest;
 
 import com.santos.springbool.services.exception.ObjectNotFoundException;
