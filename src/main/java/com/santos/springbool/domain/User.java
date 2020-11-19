@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
+// serializable serve para tranformar em bits para ser transferido pela rede.
 @Document(collection = "user")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
