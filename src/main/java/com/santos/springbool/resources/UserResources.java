@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.santos.springbool.domain.Post;
 import com.santos.springbool.domain.User;
 import com.santos.springbool.dto.UserDTO;
 import com.santos.springbool.services.UserService;
@@ -64,6 +65,13 @@ public class UserResources {
         user.setId(id);
         service.update(user);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User obj = service.findById(id);
+        List<Post> posts = obj.getPosts();
+        return ResponseEntity.ok().body(posts);
     }
 
 }
