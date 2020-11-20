@@ -7,6 +7,7 @@ import java.util.TimeZone;
 import com.santos.springbool.domain.Post;
 import com.santos.springbool.domain.User;
 import com.santos.springbool.dto.AuthorDTO;
+import com.santos.springbool.dto.CommentDTO;
 import com.santos.springbool.repository.PostRepository;
 import com.santos.springbool.repository.UserRepository;
 
@@ -41,6 +42,13 @@ public class Instanciation implements CommandLineRunner {
 
         Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem", "Vou viajar para são Paulo", new AuthorDTO(maria));
         Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bom dia", "Acordei feliz hoje", new AuthorDTO(maria));
+
+        CommentDTO c1 = new CommentDTO("Boa viagem mano!", sdf.parse("21/03/2018"), new AuthorDTO(alex));
+        CommentDTO c2 = new CommentDTO("Aproveite", sdf.parse("22/03/2018"), new AuthorDTO(bob));
+        CommentDTO c3 = new CommentDTO("Tennha um ótimo dia!", sdf.parse("23/03/2018"), new AuthorDTO(alex));
+
+        post1.getComments().addAll(Arrays.asList(c1, c2));
+        post2.getComments().addAll(Arrays.asList(c3));
 
         postRepo.saveAll(Arrays.asList(post1, post2));
 
