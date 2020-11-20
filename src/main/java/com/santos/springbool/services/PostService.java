@@ -1,5 +1,6 @@
 package com.santos.springbool.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.santos.springbool.domain.Post;
@@ -18,5 +19,9 @@ public class PostService {
     public Post findById(String id) {
         Optional<Post> post = repo.findById(id);
         return post.orElseThrow(() -> new ObjectNotFoundException("objeto não encontrado"));
+    }
+
+    public List<Post> findByTitle(String text) {
+        return repo.findByTitleContainingIgnoreCase(text);
     }
 }
